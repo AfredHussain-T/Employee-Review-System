@@ -1,0 +1,23 @@
+{
+  "name": "employeereviewsystem",
+  "version": "1.0.0",
+  "description": "This App is for review the employess and providing the feedback",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Employee",
+    "Review",
+    "System",
+    "Feedback",
+    "System"
+  ],
+  "author": "Afredhussain.t",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.2"
+  }
+}
