@@ -7,5 +7,5 @@ const connection = mongoose.connection;
 connection.on('error' , console.error.bind(console, 'Error while establishing connection'));
 
 connection.once('open' , function(){
-    console.log('Connection successfully established');
+    console.log('DB Connection successfully established');
 })
