@@ -26,14 +26,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    feedRecieved:[{
+    feedReceived:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'review'
     }],
     feedPending:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
-    }]
+    }],
+    rating: {
+        type: Number,
+        default: 0
+    }
 }, {timestamps: true});
 
 
