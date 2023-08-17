@@ -4,5 +4,5 @@ const hc = require('../controller/homecontroller');
 
 router.get('/' , hc.homeView);
 router.use('/user', require('./userRoutes'));
-
+router.use('/admin' , require('./adminRoutes'));
 module.exports = router;

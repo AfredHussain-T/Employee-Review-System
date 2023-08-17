@@ -9,6 +9,11 @@ const companySchema = new mongoose.Schema({
     companyDescription:{
         type:String,
         required:true
+    },
+
+    userList:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
     }
 });
 
