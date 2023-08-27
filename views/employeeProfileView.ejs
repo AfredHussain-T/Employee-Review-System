@@ -1,0 +1,30 @@
+<body>
+    <%if(locals.user){%>
+        <div id="Employee-profile">
+            <div id="Employee-Info">
+                <p>name: <%= currentEmp.name%></p>
+                <p>Role: <%= currentEmp.empType%></p>
+                <p>Company: <%= currentEmp.empcompany.companyname%></p>
+                <p>Employee Rating(<%= currentEmp.feedReceived.length%>): <%= currentEmp.rating.toFixed(1)%></p>
+    
+                <hr/>
+            </div>
+            <div id="ask-Reviews">
+                <h1>Ask Feedback</h1>
+                <%for(emp of companyUserList){%>
+                    <form method="post">
+                        <p><%=emp.name%></p>
+                        <button formaction="/user/askingFeedback/<%=emp.id%>/<%=currentEmp.id%>">ask</button>
+                    </form>
+                <%}%>
+                <hr/>
+            </div>
+            <div id="review-received">
+                <h1>Employee Feedbacks</h1>
+                <p><%=currentEmp.feedReceived%></p>
+            </div>
+    
+        </div>
+    <%}%>
+    
+</body>

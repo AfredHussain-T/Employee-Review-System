@@ -19,20 +19,24 @@ const userSchema = new mongoose.Schema({
     },
     empcompany:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'company',
+        ref: 'Company',
         required: true
     },
     empType:{
         type: String,
         required: true
     },
+    Rank:{
+        type: Number,
+        required: true
+    },
     feedReceived:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'review'
+        ref: 'Review'
     }],
     feedPending:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'User'
     }],
     rating: {
         type: Number,

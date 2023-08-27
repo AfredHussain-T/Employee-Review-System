@@ -11,7 +11,7 @@ passport.use(new localStrategy({
         let user = await Users.findOne({email: email});
         try {
             if(!user || user.password != password ){
-                console.log('Could not authenticate');
+                req.flash('error', 'Invalid Username/Password');
                 return done(null, false);
             }
             else{
@@ -51,7 +51,7 @@ passport.setAuthenticatedUser = async function (req, res, next) {
     if (await req.isAuthenticated()) {
         // req.user contains the current signed in user from the session cookie and we are just sending this to the locals for the views
         res.locals.user = req.user;
-        console.log(res.locals.user);
+        
     }
     next();
 }

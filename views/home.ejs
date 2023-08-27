@@ -1,6 +1,22 @@
 
-<body>
-    
+<body>  
     <h1>Home...!</h1>
-    
+    <%if(locals.user) { %>
+        <%for(pen of pendingFeeds){%>
+            <form method="post">
+                <div id="provided-feed">
+                    <textarea name="comment" cols="30" rows="3" placeholder="please provide feedback for <%=pen.name%>" required></textarea>
+                </div>
+                <select name="rating">
+                    <option>Rate The Employee</option>
+                    <%for(let i=1;i<=5;i++){%>
+                        <option value="<%= i %>"><%=i%></option>
+                    <%}%>
+                </select>
+                <p><%= locals.user.id%></p>
+                <p><%=pen.id%></p>
+                <button formaction="/user/feed/<%=pen.id%>/<%= locals.user.id%>">submit</button>
+            </form>
+        <%}%>
+    <%}%>
 </body>

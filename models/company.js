@@ -11,11 +11,11 @@ const companySchema = new mongoose.Schema({
         required:true
     },
 
-    userList:{
+    userList:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
-    }
-});
+        ref: 'User'
+    }]
+}, {timestamps: true});
 
 const Company = mongoose.model('Company' , companySchema);
 module.exports = Company;

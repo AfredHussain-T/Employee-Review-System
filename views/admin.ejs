@@ -1,0 +1,16 @@
+<body>
+    <div id="userDetails">
+        <p>name : <%= locals.user.name%></p>
+        <p>Type: <%= locals.user.empType%></p>
+        <%for (i of EmployeeList) {%>
+            <p><a href="/admin/employeeProfile/<%= i.id%>"><%= i.name%></a></p>
+            <p><%= i.empType%></p>
+            <%if(i.empType == 'employee') {%>
+                <button><a href="/admin/takeAction/<%= i.id%>">Promote</a></button>
+            <%} else { %>
+            <button><a href="/admin/takeAction/<%= i.id%>">Demote</a></button>
+            <%}%>
+            <button><a href="/admin/deleteEmp/<%= i.id%>">Delete</a></button>
+        <% } %>
+    </div>
+</body>
