@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Setting up mongo URL to connect to data base
 // mongoose.connect('mongodb://127.0.0.1:27017/emp-rev-system');
-mongoose.connect('mongodb+srv://afredhussain69:RcIdyuqWCvshqBQm@cluster0.jv06oti.mongodb.net/emp-rev-sys?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://afredhussain69:Rova7nxwtw1zl18Q@cluster0.r9drjvc.mongodb.net/ERS');
 
 const connection = mongoose.connection;
 
