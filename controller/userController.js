@@ -18,6 +18,7 @@ module.exports.homeView = async function (req, res) {
             // console.log(homeuser.feedReceived[0], '-------------------');
             res.render('home', {
                 title: 'Employee Profile Page',
+                homeuser,
                 pendingFeeds
             });
         }
@@ -52,12 +53,13 @@ module.exports.createUser = async function (req, res) {
     }
     let ExistUser = await Users.findOne({ email: req.body.email });
     try {
+        // check if the email id is existing and being used
         if (ExistUser) {
             req.flash('error', 'Use Different Mail Id / Username...');
             res.redirect('back');
         }
         else {
-
+            // validating password
             if (req.body.password != req.body.confPass) {
                 req.flash('error', 'User Not Created.., Please validate Password While confirming');
                 return res.redirect('back');
@@ -124,8 +126,9 @@ module.exports.askFeedback = async function (req, res) {
             if (feedSender.feedPending.indexOf(req.params.receiverId)) {
                 feedSender.feedPending.push(req.params.receiverId);
             }
-
+            req.flash('success', 'Feedback request sent');
             feedSender.save();
+            
             return res.redirect('back');
         }
     } catch (error) {
@@ -139,17 +142,24 @@ module.exports.askFeedback = async function (req, res) {
 //posting a feedback
 
 module.exports.postFeedback = async function (req, res) {
-    let feedReceiverId = req.params.feedReceiverId;
-    let feedSenderId = req.params.feedSenderId;
-    let currFeed = await Reviews.create({
-        sender: feedSenderId,
-        recepient: feedReceiverId,
-        comment: req.body.comment,
-        rating: req.body.rating
-    });
-    let Sender = await Users.findByIdAndUpdate(feedSenderId, { $pull: { feedPending: feedReceiverId } });
-    let Receiver = await Users.findByIdAndUpdate(feedReceiverId, { $push: { feedReceived: currFeed.id } }).populate('feedReceived');
-    console.log('logged-------------------', Receiver.feedReceived);
-    res.redirect('back');
+    try {
+        let feedReceiverId = req.params.feedReceiverId;
+        let feedSenderId = req.params.feedSenderId;
+        let currFeed = await Reviews.create({
+            sender: feedSenderId,
+            recepient: feedReceiverId,
+            comment: req.body.comment,
+            rating: req.body.rating
+        });
+        // populating the data and sending it to the views
+        let Sender = await Users.findByIdAndUpdate(feedSenderId, { $pull: { feedPending: feedReceiverId } });
+        let Receiver = await Users.findByIdAndUpdate(feedReceiverId, { $push: { feedReceived: currFeed.id } }).populate('feedReceived');
+        console.log('logged-------------------', Receiver.feedReceived);
+        req.flash('success', 'Feedback sent');
+        res.redirect('back');
+    } catch (error) {
+        req.flash('error' , 'Internal Server Error');
+        console.log('Error:' , error);
+    }
 }
 

@@ -1,8 +1,9 @@
 const passport = require('passport');
+// Importing passport local strategy
 const localStrategy = require('passport-local').Strategy;
 const Users = require('../models/user');
 
-
+// Implementing passport local strategy
 passport.use(new localStrategy({
     usernameField: 'email',
     passReqToCallback: true
@@ -10,6 +11,7 @@ passport.use(new localStrategy({
 
         let user = await Users.findOne({email: email});
         try {
+            // Validating the user password
             if(!user || user.password != password ){
                 req.flash('error', 'Invalid Username/Password');
                 return done(null, false);

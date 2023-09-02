@@ -1,8 +1,7 @@
 body{
     margin: 0px;
-    background-color: wheat;    
-} 
-/* Adding Style header-div */
+}
+/* Adding Style to header Div where You have options to navigate between pages */
 #header-div{
     display: flex;
     align-items: center;
@@ -29,6 +28,7 @@ body{
     align-items: center;
     justify-content: center;
 }
+
 .header-element{
     width: 20%;
     padding: 1.4%;
@@ -56,80 +56,65 @@ body{
     width: 30%;
     height: 30%;
 }
-/* Adding Style to profile user div */
-#ProfileUser{
-    border-bottom: 2px solid gray ;
-    width: 90%;
-    margin-left: 5%;
-}
-/* Adding Style to Feedback div */
-#provideFeed{
-    margin-top: 3%;
-    border-radius: 20px;
-    background-color:white;
-    width: 80%;
-    height: 300px;
-    overflow-y: auto;
-    margin-left: 10% ;
-}
 
-/* Styling the feedback text area */
-#provideFeed ul{
+/* Styling Employuee Info */
+#Employee-Info{
+    margin:0 1% 0 1% ;
+    border-bottom: 2px solid gray;
+    padding: 1%;
+}
+/* Adding style to feed back section */
+#ask-Reviews{
+    margin:0 1% 0 1% ;
+    border-bottom: 2px solid gray;
+    padding: 1%;
+    height: 180px;
+    overflow-y: auto;
+}
+/* Adding Style to UL */
+#ask-Reviews ul{
     list-style: decimal;
 }
-#provideFeed li{
-    border-bottom: 2px solid gray;
-    margin-right: 4%;
-    margin-top:2%;
-}
-
-
-/* Adding style to feedback form */
 
 form{
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-form textarea{
-    padding: 3%;
-    font-style: italic;
-}
-
-form textarea ::placeholder{
-    font-style: italic;
-    font-weight: bold;
-}
-form select{
-    padding: 1%;
-    width: 25%;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid gray;
-}
-/* Adding style to form button */
-form button{
-    margin-right: 20%;
-    width: 15%;
-    padding: 1%;
-    border: none;
-    outline: none;
-    background-color: black;
-    font-weight: bold;
-    font-style: italic;
-    color: wheat;
-}
-/* Adding style to feedback form input */
-
-#provided-feed{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin: 2%;
-    /* border: 2px solid black; */
+    padding: 0.4%;
+    margin-top: 0.7%;
     width: 30%;
 }
+form:hover{
+    transition: 1s;
+    box-shadow: 1px 1px 20px 10px lightblue;
+}
+form p{
+    margin-left: 3%;
+}
+form button{
+    margin-right: 6%;
+    width: 40%;
+    padding:2% ;
+    background-color: orange;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-style: italic;
+    color: beige;
+}
 
-#provided-feed textarea{
-    border: 3px solid black;
+/* Adding style to review received */
+#review-received{
+    margin:0 1% 0 1% ;
+    height: 250px;
+    overflow-y: auto;
+}
+#review-received ul{
+    list-style: decimal;
+}
+#review-received li{
+    border: 1px solid black;
+    padding: 0 3% 0 3%;
+    margin: 0.5% 0 0.5% 0;
 }

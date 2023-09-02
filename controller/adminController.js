@@ -15,7 +15,9 @@ module.exports.createCompany = async function (req, res) {
     let company = await Companies.findOne({ companyname: req.body.companyname });
 
     try {
+        // Checking if mail Id is used
         if (!Exist) {
+            // Checking if company name is used
             if (!company) {
                 let currCompany = await Companies.create({
                     companyname: req.body.companyname,
@@ -36,7 +38,11 @@ module.exports.createCompany = async function (req, res) {
                     req.flash('error', 'Password missmatch');
                     res.redirect('back');
                 }
-
+                
+                req.flash('success', 'Company Registered');
+                res.redirect('back');
+            }else{
+                req.flash('error', 'Try different name')
                 res.redirect('back');
             }
         }
@@ -54,6 +60,7 @@ module.exports.createCompany = async function (req, res) {
 module.exports.createUser = async function(req,res){
     let ExistUser = await CompanyUsers.findOne({ email: req.body.email });
     try {
+        // checking if user exists
         if (ExistUser) {
             req.flash('error', 'Use Different Mail Id / Username...');
             res.redirect('back');
@@ -114,6 +121,7 @@ module.exports.viewAdmin = async function (req, res) {
     }
 }
 
+// function to check the profile of all the employees under the admin
 module.exports.employeeProfileView = async function(req,res){
     try {
         if(req.isAuthenticated()){
@@ -122,7 +130,12 @@ module.exports.employeeProfileView = async function(req,res){
                 populate: {
                     path: 'userList'
                 }
-            }).populate('feedReceived');
+            }).populate('feedReceived').populate({
+                path: 'feedReceived',
+                populate: {
+                    path: 'sender'
+                }
+            });
         
             // if(currentEmp.feedReceived){
             //     const len = currentEmp.feedReceived.length;
@@ -145,6 +158,7 @@ module.exports.employeeProfileView = async function(req,res){
                 companyUserList
             });
         } else{
+            req.flash('error', 'User session ended');
             return res.redirect('/');
         }
     } catch (error) {
@@ -171,6 +185,7 @@ module.exports.levelUpDown = async function(req,res){
     res.redirect('back')
 }
 
+// function to delete an employee
 module.exports.deleteEmployee = async function(req,res){
     try {
         let user = await CompanyUsers.findByIdAndDelete(req.params.delId);

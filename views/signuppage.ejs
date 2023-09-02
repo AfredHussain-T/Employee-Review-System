@@ -1,20 +1,63 @@
-<h1>signup...!</h1>
-
-<form method="post">
-
-    <input type="text" name="name" placeholder="Enter Your Name...!" required>
-    <input type="email" name="email" placeholder="Enter Your Email...!" required>
-    <input type="password" name="password" placeholder="Enter Your Password" required>
-    <input type="password" name="confPass" placeholder="Confirm Password" required>
-    <%if(!locals.user) { %>
-        <select name="empcompany" >
-            <option>Select Your Company</option>
-            <%for(company of AllCompanies){%>
-                <option value="<%= company.id%>"><%= company.companyname%></option>
-            <%}%>
-        </select>
-    <% } %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+<body>
+        <!-- Signup form to create an employee -->
+        <div id="main-container">
+            <!-- Heading -->
+            <div id="signup-logo">
+                <h1>Sign Up</h1>
+                <img src="https://cdn-icons-png.flaticon.com/128/1001/1001371.png" alt="x">
+            </div>
+            <!-- Fill up the form with the required information -->
+            <form method="post">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confPass" placeholder="Confirm Password" required>
+                <%if(!locals.user) { %>
+                    <select name="empcompany" >
+                        <option>Select Your Company</option>
+                        <%for(company of AllCompanies){%>
+                            <option value="<%= company.id%>"><%= company.companyname%></option>
+                        <%}%>
+                    </select>
+                <% } %>
+                <!-- On submiting this user will be created if every condition is satisfied -->
+                <button formaction="/user/createUser">Sign Up</button>
+            </form>
+            <div id="header-div">
     
-    
-    <button formaction="/user/createUser">Sign Up</button>
-</form>
+                <%if(locals.user){%>
+                    <!-- <a href="/user/home">Home</a> -->
+                    <div id="go-back">
+                        <p>Don't want to add user </p>
+                        <button><a href="/admin/adminPage">Go Back</a></button>
+                    </div>
+                    <!-- <%if(locals.user.empType == 'admin'){%>
+                        <a href="/user/signuppage">Add Emp</a>
+                    <%}%> -->
+                <%}else{%>
+                    <div id="signin">
+                        <p>Already have an account? </p>
+                        <button><a href="/">Sign In</a></button>
+                    </div>
+                    <div id="register">
+                        <p>Couldn't find company?</p>
+                        <button><a href="/admin/registerCompany">Register Company</a></button>
+                    </div>    
+                <%}%>
+                
+            </div>
+        </div>
+        <%-include('noty');%>
+</body>
+</html>

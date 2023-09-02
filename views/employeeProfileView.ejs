@@ -1,30 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/emp.css">
+</head>
 <body>
-    <%if(locals.user){%>
-        <div id="Employee-profile">
-            <div id="Employee-Info">
-                <p>name: <%= currentEmp.name%></p>
-                <p>Role: <%= currentEmp.empType%></p>
-                <p>Company: <%= currentEmp.empcompany.companyname%></p>
-                <p>Employee Rating(<%= currentEmp.feedReceived.length%>): <%= currentEmp.rating.toFixed(1)%></p>
-    
-                <hr/>
-            </div>
-            <div id="ask-Reviews">
-                <h1>Ask Feedback</h1>
-                <%for(emp of companyUserList){%>
-                    <form method="post">
-                        <p><%=emp.name%></p>
-                        <button formaction="/user/askingFeedback/<%=emp.id%>/<%=currentEmp.id%>">ask</button>
-                    </form>
-                <%}%>
-                <hr/>
-            </div>
-            <div id="review-received">
-                <h1>Employee Feedbacks</h1>
-                <p><%=currentEmp.feedReceived%></p>
-            </div>
-    
+
+<!-- header div to navigate to different pages -->
+
+    <div id="header-div">
+        <div id="header-left" class="header-element">
+            <!-- Navigates to home page or profile page of an employee -->
+            <a href="/user/home">Home</a>
+            <!-- Navigates to Users page if the user is admin -->
+            <a href="/admin/adminPage">Users</a>
         </div>
-    <%}%>
-    
+        <div id="header-right" class="header-element">
+            <%if(locals.user.empType=='admin' ){%>
+                <!-- To add an user under a company by the admin -->
+                <a href="/user/signuppage">AddUser</a>
+            <%}%>
+            <!-- To sign out and end the user session -->
+            <a id="signout" href="/user/signout"> <img src="https://cdn-icons-png.flaticon.com/128/4400/4400828.png" alt="x"></a>
+        </div>
+    </div>
+
+    <!-- Container that displays the data of the employee to the admin -->
+    <div id="Employee-profile">
+        <div id="Employee-Info">
+            <p>Name: <%= currentEmp.name%></p>
+            <p>Role: <%= currentEmp.empType%></p>
+            <p>Company: <%= currentEmp.empcompany.companyname%></p>
+            <p>Employee Ratings: <%= currentEmp.feedReceived.length%></p>
+            <!-- <hr/> -->
+        </div>
+
+        <!-- Here Admin can ask different employees to provide feedback on a employee who's profile is being viewed-->
+        <div id="ask-Reviews">
+            <h1>Ask Feedback</h1>
+            <ul>
+                <%for(emp of companyUserList){%>
+                    <li>
+                        <form method="post">
+                            <p><%=emp.name%></p>
+                            <button formaction="/user/askingFeedback/<%=emp.id%>/<%=currentEmp.id%>">Ask Feedback</button>
+                        </form>
+                    </li>
+                <%}%>
+            </ul>
+        </div>
+        <!-- Admin can only watch the reviews received to a user under Admin -->
+        <div id="review-received">
+            <%if(currentEmp.feedReceived.length>0){%>
+                <h1>Employee Feedbacks</h1>
+                <ul>
+                    <%for(i of currentEmp.feedReceived){%>
+                        <li>
+                            <h1><%=i.sender.name%></h1>
+                            <p>Feedback: <%= i.comment%></p>
+                            <p>Rating: <%=i.rating%></p>
+                            <p>Date: <%=i.createdAt.toString().substring(0,15)%></p>
+                        </li>
+                    <%}%>
+                </ul>
+            <%}else{%>
+                <h1>No Feedbacks Received</h1>
+            <%}%>
+            
+        </div>
+
+    </div>
+    <%-include('noty');%>
 </body>
+</html>

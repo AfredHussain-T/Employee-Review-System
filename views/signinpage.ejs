@@ -1,8 +1,46 @@
-<h1>sign in page</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<form method="post">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title%>>
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/signIn.css">
+</head>
 
-    <input type="email" name="email" placeholder="Username or Email">
-    <input type="password" name="password" placeholder="Password">
-    <button formaction="/user/signin">Sign In</button>
-</form>
+<body>
+        <!-- Main container which contains the form to signin -->
+        <div id="main-container">
+            <!-- Heading -->
+            <div id="signin-logo">
+                <h1>Sign In </h1>
+                <img src="https://cdn-icons-png.flaticon.com/128/6815/6815136.png" alt="xx">
+            </div>
+            <!-- Form to create a user session if exists -->
+            <form method="post">
+
+                <input type="email" name="email" placeholder="Username or Email">
+                <input type="password" name="password" placeholder="Password">
+                <button formaction="/user/signin">SignIn</button>
+            </form>
+
+            <div id="header-div">
+
+                
+                    <!-- <a href="/">Sign In</a> -->
+                    <p>Don't have an account?</p>
+                    <button><a href="/user/signuppage">SignUp</a></button>
+                    <!-- <a href="/admin/registerCompany">Register Company</a>     -->
+                
+                
+            </div>
+        </div>
+        <%-include('noty');%>
+</body>
+
+</html>

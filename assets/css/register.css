@@ -1,0 +1,87 @@
+body{
+    margin: 0px;
+    color: gray;
+}
+
+/* Adding Style to main Container */
+#main-container{
+    width: 50vw;
+    margin-left: 25%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    /* border: 1px solid black; */
+    box-shadow: 2px 2px 20px 20px rgb(212, 207, 207);
+    border-radius: 20px;
+}
+
+/* Adding Style to Register heading*/
+#register-logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border: 2px solid black; */
+    width: 60%;
+    margin: 1%;
+}
+/* Adding Style to Register image */
+
+#register-logo img{
+    width: 10%;
+}
+
+/* Adding Style to the sign up form */
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* border: 2px solid black; */
+    padding: 1%;
+    width: 60%;
+}
+/* Adding Style to the sign up form input elements */
+form input{
+    padding: 2.5%;
+    width: 85%;
+    margin: 1%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid gray;
+}
+form button{
+    width: 50%;
+    outline: none;
+    border: none;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 25%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 3%;
+}
+
+#go-back{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 85%;
+    margin: 2%;
+}
+
+#go-back button{
+    width: 30%;
+    background-color: black;
+    padding: 1.5%;
+
+}
+#go-back a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+}

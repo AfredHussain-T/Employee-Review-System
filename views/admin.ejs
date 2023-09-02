@@ -1,16 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title%>>
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/admin.css">
+</head>
+
 <body>
-    <div id="userDetails">
-        <p>name : <%= locals.user.name%></p>
-        <p>Type: <%= locals.user.empType%></p>
-        <%for (i of EmployeeList) {%>
-            <p><a href="/admin/employeeProfile/<%= i.id%>"><%= i.name%></a></p>
-            <p><%= i.empType%></p>
-            <%if(i.empType == 'employee') {%>
-                <button><a href="/admin/takeAction/<%= i.id%>">Promote</a></button>
-            <%} else { %>
-            <button><a href="/admin/takeAction/<%= i.id%>">Demote</a></button>
-            <%}%>
-            <button><a href="/admin/deleteEmp/<%= i.id%>">Delete</a></button>
-        <% } %>
-    </div>
+        <!-- header div to navigate to different pages -->
+        <div id="header-div">
+                <div id="header-left" class="header-element">
+                    <!-- Navigates to home page or profile page of an employee -->
+                    <a href="/user/home">Home</a>
+
+                    <!-- Navigates to Users page if the user is admin -->
+                    <a href="/admin/adminPage">Users</a>
+                </div>
+                <div id="header-right" class="header-element">
+                    <%if(locals.user.empType=='admin' ){%>
+                        <!-- To add an user under a company by the admin -->
+                        <a href="/user/signuppage">AddUser</a>
+                    <%}%>
+                    <!-- To sign out and end the user session -->
+                    <a id="signout" href="/user/signout"> <img src="https://cdn-icons-png.flaticon.com/128/4400/4400828.png" alt="x"></a>
+                </div>
+
+        </div>
+        <!-- This div contains all the users under the particular admin -->
+        <div id="usersContainer">
+            <h3>User Details:</h3>
+                <ul>
+                    <!-- This is heading row for the data that is shown below this -->
+                    <li class="User-Details-heading">
+                        <p>Name</p>
+                        <p>Role</p>
+                        <p>Email</p>
+                        <p>Update </p>
+                        <p>Remove</p>
+                    </li>
+
+                    <!-- The data of the employees is populated in the controller and sent to display -->
+                    <%for (i of EmployeeList) {%>
+                        <li id="User-Details">
+                            <p><a href="/admin/employeeProfile/<%= i.id%>"><%= i.name%></a></p>
+                            <p><%= i.empType%></p>
+                            <p><%= i.email%></p>
+                            <%if(i.empType=='employee' ) {%>
+                                <button class="update-access Promote"><a href="/admin/takeAction/<%= i.id%>">Promote</a></button>
+                            <%} else { %>
+                                    <button class="update-access Demote"><a href="/admin/takeAction/<%= i.id%>">Demote</a></button>
+                            <%}%>
+                            <a id="btn-delete" href="/admin/deleteEmp/<%= i.id%>"><img src="https://cdn-icons-png.flaticon.com/128/11503/11503034.png" alt="x"></a>
+                        </li>
+                    <% } %>
+                    </table>
+                    
+            
+        </div>
+        <%-include('noty');%>
 </body>
+
+</html>

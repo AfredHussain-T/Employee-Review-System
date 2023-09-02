@@ -1,0 +1,150 @@
+body{
+    margin: 0px;
+    color: rgb(88, 88, 88);
+}
+
+/* Adding Style to main Container */
+#main-container{
+    width: 50vw;
+    margin-left: 25%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    /* border: 1px solid black; */
+    box-shadow: 2px 2px 20px 20px rgb(212, 207, 207);
+    border-radius: 20px;
+}
+/* Adding Style to Signup heading*/
+#signup-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid black; */
+    width: 47%;
+    margin: 1%;
+}
+/* Adding Style to Signup image */
+
+#signup-logo img{
+    width: 10%;
+}
+
+/* Adding Style to the sign up form */
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* border: 2px solid black; */
+    padding: 1%;
+    width: 60%;
+}
+/* Adding Style to the sign up form input elements */
+form input{
+    padding: 2.5%;
+    width: 85%;
+    margin: 1%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid gray;
+}
+/* Adding Style to the sign up form  select element*/
+form select{
+    padding: 2.5%;
+    border: none;
+    outline: none;
+    width: 91%;
+    margin-top: 1% ;
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+/* Adding Style to the sign up button */
+form button{
+    width: 50%;
+    outline: none;
+    border: none;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 25%;
+    margin-top: 2%;
+    padding: 3%;
+}
+
+/* Adding Style to sign in Register company div */
+
+#header-div{
+    padding: 1%;
+    margin: 1%;
+    /* border: 2px solid black; */
+    width: 62%;
+}
+
+#header-div p{
+    font-style: italic;
+}
+
+/* Adding Style to sign in and register buttons */
+#signin{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+    margin: 1%;
+}
+#signin button{
+    width: 30%;
+    background-color: black;
+    padding: 2%;
+
+}
+#signin a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+}
+/* Adding Style to register buttons */
+#register{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border: 1px solid black; */
+    margin: 1%;
+}
+#register button{
+    width: 30%;
+    background-color: black;
+    padding: 1.5%;
+
+}
+#register a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Adding Style to sign in and going back button */
+#go-back{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#go-back button{
+    width: 30%;
+    background-color: black;
+    padding: 1.5%;
+
+}
+#go-back a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+}

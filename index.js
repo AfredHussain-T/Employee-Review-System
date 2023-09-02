@@ -1,12 +1,11 @@
 const express = require('express');
 const mongoDB = require('./configs/mongoose');
-const port = 1004;
+// const port = 1004;
 const app = express();
-const Layouts = require('express-ejs-layouts');
+require("dotenv").config();
+// importing router
 const route = require('./routes/indexRoutes');
-
-
-
+// Importing cookie parser
 const cookieParser = require('cookie-parser');
 
 // Importing Express Session
@@ -24,23 +23,23 @@ const flashMiddleware = require('./configs/setFlash');
 // middlewares
 app.use(express.urlencoded());
 app.use(cookieParser());
-app.use(express.static('./assets'));
-app.use(Layouts);
 
+
+app.use(express.static('./assets'));
 
 // Setting up view engine
-app.set('layout extractStyles' , true);
-app.set('layout extractScripts', true);
+
 app.set('view engine' ,'ejs');
 app.set('views' , './views');
 
+// Implementing express session to store the cookie and to maintain the session of a logged in user
 app.use(expSession({
     name: 'EmployeeReviewSystem',
     secret: 'ThisIsAFeedbackApp',
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge : 1000000, 
+        maxAge : 100000000, 
     },
     // Storing the cookie data in mongo db
     store: mongoStore.create({
@@ -51,20 +50,21 @@ app.use(expSession({
     })
     
 }));
+// Implementing passport local
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser); 
-
+// Implementing flash messages
 app.use(flash());
 app.use(flashMiddleware.setFlash);
 
 app.use('/', route);
 
-app.listen(port, function(err){
+app.listen(process.env.PORT, function(err){
     if(err){
         console.log('Error while connecting to the port ', err);
         return;
     }
 
-    console.log('The connection has been established on port :', port);
+    console.log('The connection has been established on port :', process.env.PORT);
 });

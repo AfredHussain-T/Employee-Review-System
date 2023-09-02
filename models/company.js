@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+// Creating schema for Company with name, description and the users under the company's data
 const companySchema = new mongoose.Schema({
     companyname:{
         type: String,

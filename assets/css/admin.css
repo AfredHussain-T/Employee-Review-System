@@ -1,0 +1,132 @@
+/* Adding style to Body */
+body{
+    margin: 0px;
+}
+
+/* Adding Style to header Div where You have options to navigate between pages */
+#header-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(119, 138, 126);
+    
+}
+/* Styling header buttons */
+/* #header-div button{
+    padding: 3%;
+    width: 30%;
+    border: none;
+} */
+/* Adding style to buttons in header element */
+#header-div a{
+    text-decoration: none;
+    padding: 2%;
+    width: 28%;
+    font-style: italic;
+    font-weight: bold;
+    background-color: orange;
+    color: beige;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-element{
+    width: 20%;
+    padding: 1.4%;
+    /* border: 2px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#header-left{
+    margin-left: 2%;
+}
+
+#header-right{
+    margin-right: 2%;
+}
+/* Styling the Image for signout */
+#signout{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+/* Styling the image in header element */
+#header-right img{
+    width: 30%;
+    height: 30%;
+}
+
+/* Styling the body of the page */
+/* --------------------------- */
+
+/* Styling the Admin details container */
+#adminDetails{
+    margin: 2%;
+    padding: 1%;
+    border-bottom: 1px solid gray;
+}
+
+/* Adding Style to Users container */
+#usersContainer{
+    margin-left: 10%;
+    margin-top: 3%;
+    width: 80%;
+    height: 550px;
+    /* border: 2px solid black; */
+    box-shadow: 2px 2px 20px 15px rgb(108, 102, 102);
+    border-radius: 20px;
+    overflow-y: auto;
+}
+
+/* Adding style to Single User */
+#usersContainer ul{
+    list-style: none;
+}
+
+.User-Details-heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid rgb(112, 108, 108);
+    margin-right: 2%;
+    margin-top: 0.6%;
+}
+
+/* Adding Style to the list elements (Single User Details) */
+#User-Details{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: beige;
+    border-radius: 20px;
+    /* border: 1px solid black; */ 
+    margin-right: 2%;
+    margin-top: 0.6%;
+}
+#User-Details:hover{
+    transition: 1s;
+    box-shadow: 1px 1px 15px 1px rgb(11, 218, 81);
+}
+#User-Details a{
+    text-decoration: none;
+}
+
+/* Adding style to delete button */
+#btn-delete img{
+    width: 30px;
+}
+/* Styling the access updating button */
+.update-access{
+    padding: 0.6%;
+    width: 8%;
+}
+.Promote{
+    border: 3px solid rgb(11,218,81);
+}
+
+.Demote{
+    border: 3px solid rgb(255, 0, 0);
+}
+
