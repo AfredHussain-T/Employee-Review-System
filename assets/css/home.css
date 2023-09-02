@@ -133,3 +133,11 @@ form button{
 #provided-feed textarea{
     border: 3px solid black;
 }
+
+
+/* Media query which is applied if the screen size is less than 1000px */
+@media screen and (max-width: 1000px) {
+    body {
+        width:1000px ;
+    }
+  }

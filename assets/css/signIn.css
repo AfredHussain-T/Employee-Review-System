@@ -94,3 +94,12 @@ form button{
     border: none;
     background: rgb(11, 218, 81);
 }
+
+
+
+/* Media query which is applied if the screen size is less than 1500px */
+@media screen and (max-width: 1500px) {
+    #main-container {
+        width:700px ;
+    }
+  }
